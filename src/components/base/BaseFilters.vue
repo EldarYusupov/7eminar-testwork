@@ -24,8 +24,8 @@
         >
           <div class="card-body">
             <div v-for="(checkbox, index) in checkboxes" :key="index">
-              <input type="checkbox" :id="checkbox" :name="checkbox" v-model="checked[checkbox]" />
-              <label :for="checkbox"><span class="p-2">{{ checkbox }}</span></label>
+              <input type="checkbox" :id="checkbox + _uid" :name="checkbox" v-model="checked[checkbox]" />
+              <label :for="checkbox + _uid"><span class="p-2">{{ checkbox }}</span></label>
             </div>
           </div>
         </div>
@@ -77,6 +77,7 @@ export default {
     checked: {
       deep: true,
       handler(v) {
+        console.log(v)
         this.filterData({theme: this.$route.params.filter || '', options: v})
       }
     }
